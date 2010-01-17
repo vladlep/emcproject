@@ -29,6 +29,27 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<div id="news">
+	   <?php
+		require_once ('rss/rss_fetch.inc');
+		
+		//$url = 'http://feeds2.feedburner.com/Stirirolro-Auto';
+		$url= 'http://www.vreaucredit.ro/rss-credite-30.xml';
+		$rss = fetch_rss($url);
+		$source = $rss->channel['title'];	
+	     
+		
+		for($i=0; $i<3; $i++){
+		
+			$title=$rss->items[$i]['title'];
+			$url=$rss->items[$i]['link'];
+			$content= $rss->items[$i]['summary'];
+				echo '<a href='.$url.'>'.$title.'</a><br />'.$content.'<hr />';		
+		}
+		
+		?>
+		<div align="right"><a href="http://www.vreaucredit.ro//" target="_blank"> <strong>Vreau</strong><strong>Credite</strong> - <?=$source?></a></div>
+	   </div>
 <!-- InstanceEndEditable -->
 </div>
 </body>
