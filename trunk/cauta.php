@@ -53,7 +53,7 @@
 		$pret=$_POST["pret"];
 		?>
 		<div >
-	
+		<img id="pict" src='photo/default.jpg' />
 		<?php
 	  //slelect din baza de date where parinte=0
 		 $ref1=mysql_query("SELECT * FROM `imobiliare`.`anunt` WHERE `tip_oferta`='$tip_oferta' AND `tip_imobil`='$tip_imobil' AND `pret`<='$pret'");
@@ -64,8 +64,16 @@
 			//print_r($item);
 			?>
 			<div>
-				<label ><?=$item['tip_oferta']?></label>
-				<p><?=$item['tip_imobil']?></p>
+			<?php if($item['poza'])
+			{ ?>
+			<img src='thumbs/<?=$item['poza']?>' onClick="schimba('<?=$item['poza']?>')" />
+			<?php
+			}else
+			{?>
+			<img  src='thumbs/default.jpg' />
+			<?php } ?>	
+				<label ><?=$item['tip_oferta']."  ".$item['tip_imobil']." ".$item['pret']?></label>
+
 			</div>
 			<?php
 		
