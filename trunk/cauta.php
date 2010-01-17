@@ -21,7 +21,68 @@
 </div >
 <div align="center">
 <!-- InstanceBeginEditable name="region1" -->
-cauta
+	<?php require_once("conection.php"); 	?>
+	<form method="post" action="cauta.php?actiune=cauta" >
+	<div align="left">
+	Tip oferta :
+	<select name="tip_oferta">
+			<option value="Vanzare" selected >Vanzare</option>
+			<option value="Cumparare">Cumparare</option>
+			<option value="Inchirieri">Inchirieri</option>
+	</select>
+	<br>
+	Tipul imobilului : 
+	<select name="tip_imobil" >
+			<option value="Casa">Casa</option>
+			<option value="Apartament" selected>Apartament</option>
+			<option value="Spatiu Comercial">Spatiu comercial</option>
+	</select>
+	<br>
+	Pret : <input name="pret" type="text" value="500000"/>
+	</div>
+	
+	<input type="submit" value="cauta"/>
+	<input type="reset"/>
+	</form>
+<hr>
+<?php  
+	if(strcmp($_GET["actiune"],"cauta")==0)
+	{
+		$tip_oferta=$_POST["tip_oferta"];
+		$tip_imobil=$_POST["tip_imobil"];
+		$pret=$_POST["pret"];
+		?>
+		<div >
+	
+		<?php
+	  //slelect din baza de date where parinte=0
+		 $ref1=mysql_query("SELECT * FROM `imobiliare`.`anunt` WHERE `tip_oferta`='$tip_oferta' AND `tip_imobil`='$tip_imobil' AND `pret`<='$pret'");
+		//print_r("aa".$ref1);
+	 
+	 	 while($item=mysql_fetch_array($ref1) )
+		 	{
+			//print_r($item);
+			?>
+			<div>
+				<label ><?=$item['tip_oferta']?></label>
+				<p><?=$item['tip_imobil']?></p>
+			</div>
+			<?php
+		
+			}
+	
+	}
+?>
+
+<script>
+function schimba(poza)
+{
+	var elem=document.getElementById('pict');
+	elem.src='photo/'+poza;
+	
+}
+
+</script>
 <!-- InstanceEndEditable -->
 </div>
 </body>
