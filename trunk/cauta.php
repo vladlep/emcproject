@@ -5,21 +5,22 @@
 <title>Untitled Document</title>
 <!-- InstanceEndEditable -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet"  href="css1.css" type="text/css"> 
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
 
-<body>
-<div>
-<div ali align="center"> 
-<a href="home_page.php">Home</a>
-<a href="adauga.php">Adauga</a>
-<a href="cauta.php">Cauta</a>
-<a href="contact.php">Contact</a>
+<body >
+<div id="meniu">
+<div align="center"> 
+<a id="linkuri" href="home_page.php">Home</a>
+<a id="linkuri" href="adauga.php">Adauga</a>
+<a id="linkuri" href="cauta.php">Cauta</a>
+<a id="linkuri" href="contact.php">Contact</a>
 </div>
 
 </div >
-<div align="center">
+<div  id="content" >
 <!-- InstanceBeginEditable name="region1" -->
 	<?php require_once("conection.php"); 	?>
 	<form method="post" action="cauta.php?actiune=cauta" >

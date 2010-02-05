@@ -1,0 +1,26 @@
+body {
+background-color:#E2E1CD;
+font-family:sans-serif,Arial;
+font-size:10pt;
+margin:0;
+}
+#content
+{
+margin-left: auto;
+margin-right: auto;
+width:800px;
+height:1000px;
+background:#99CCFF;
+}
+#meniu
+{
+background:#99CC00;
+}
+#linkuri
+{
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#6D1D0E repeat-x scroll center bottom;
+color:#FFFFFF;
+}
