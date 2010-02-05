@@ -3,8 +3,10 @@
 <head>
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Untitled Document</title>
+<link rel="stylesheet"  href="../css_adauga.css" type="text/css"> 
 <!-- InstanceEndEditable -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet"  href="css1.css" type="text/css"> 
 <!-- InstanceBeginEditable name="head" -->
 <style type="text/css">
 <!--
@@ -14,17 +16,17 @@
 <!-- InstanceEndEditable -->
 </head>
 
-<body>
-<div>
-<div ali align="center"> 
-<a href="home_page.php">Home</a>
-<a href="adauga.php">Adauga</a>
-<a href="cauta.php">Cauta</a>
-<a href="contact.php">Contact</a>
+<body >
+<div id="meniu">
+<div align="center"> 
+<a id="linkuri" href="home_page.php">Home</a>
+<a id="linkuri" href="adauga.php">Adauga</a>
+<a id="linkuri" href="cauta.php">Cauta</a>
+<a id="linkuri" href="contact.php">Contact</a>
 </div>
 
 </div >
-<div align="center">
+<div  id="content" >
 <!-- InstanceBeginEditable name="region1" -->
 
 <?php require_once("conection.php"); 
@@ -84,7 +86,7 @@ function resize($nume_poza){
 
 	<form method="post" action="adauga.php?actiune=adauga" enctype="multipart/form-data">
 		<h2> Date proprietar</h2> <br>
-		Nume <span  class="style2">(*)</span> :
+		<div id="nume"> Nume </div><span  class="style2">(*)</span> :
 		<input type="text" name="nume"	/>
 		<br>
 		Telefon <span class="style2">(*)</span> :
