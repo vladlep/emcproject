@@ -11,6 +11,7 @@
 </head>
 
 <body >
+
 <div id="meniu">
 <div align="center"> 
 <a id="linkuri" href="home_page.php">Home</a>
@@ -18,10 +19,11 @@
 <a id="linkuri" href="cauta.php">Cauta</a>
 <a id="linkuri" href="contact.php">Contact</a>
 </div>
+</div>
 
-</div >
 <div  id="content" >
 <!-- InstanceBeginEditable name="region1" -->
+
 <p>jhkh</p></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

@@ -13,10 +13,12 @@
 .style2 {font-size: 12px}
 -->
 </style>
+<link href="css_adauga.css" rel="stylesheet" type="text/css">
 <!-- InstanceEndEditable -->
 </head>
 
 <body >
+
 <div id="meniu">
 <div align="center"> 
 <a id="linkuri" href="home_page.php">Home</a>
@@ -24,8 +26,8 @@
 <a id="linkuri" href="cauta.php">Cauta</a>
 <a id="linkuri" href="contact.php">Contact</a>
 </div>
+</div>
 
-</div >
 <div  id="content" >
 <!-- InstanceBeginEditable name="region1" -->
 
@@ -84,67 +86,61 @@ function resize($nume_poza){
 	
 	
 
-	<form method="post" action="adauga.php?actiune=adauga" enctype="multipart/form-data">
-		<h2> Date proprietar</h2> <br>
-		<div id="nume"> Nume </div><span  class="style2">(*)</span> :
-		<input type="text" name="nume"	/>
-		<br>
-		Telefon <span class="style2">(*)</span> :
-		<input type="text" name="telefon" />
-		<br>
-		E-mail : 	
-		<input type="text" name="email" />
-		<br>
-		<strong><h2> Date anunt</h2> <br>
-		</strong>
-		Tipul ofertei <span  class="style2">(*)</span> :
+	<form method="post" action="adauga.php?actiune=adauga" enctype="multipart/form-data"  id="table">
+		<h2 id="st1">&nbsp;&nbsp;Date proprietar</h2> <br>
+		<span  class="style2" >Nume (*) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="nume"	/></span><br><br>
+		<span  class="style2" >Telefon (*) :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="telefon"	/></span><br><br>
+		<span  class="style2" >Email (*) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email"	/></span><br><br>
+		
+		<h2 id="st1">&nbsp;&nbsp;Date anunt</h2> <br>
+		
+		<span  class="style2" > Tipul ofertei:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<select name="tip_oferta" >
 			<option value="Vanzare">Vanzare</option>
 			<option value="Cumparare">Cumparare</option>
 			<option value="Inchirieri">Inchirieri</option>
-		</select>
-		<br>
-		Tipul imobilului <span class="style2">(*)</span>: 
+		</select></span><br><br>
+		
+		<span  class="style2" >Tipul imobilului(*):&nbsp;&nbsp;</span>
 		<select name="tip_imobil" >
 			<option value="Casa">Casa</option>
 			<option value="Apartament">Apartament</option>
 			<option value="Spatiu Comercial">Spatiu comercial</option>
-		</select>
-		<br>
-		Pret <span class="style2">(*)</span> :
-		<input type="text" name="pret"/> Euro
-		<br>
-		Zona <span class="style2">(*)</span> : 
-		<input type="text" name="zona"/>
-		<br>
-		Numar de incaperi <span class="style2">(*)</span> :
-        <input type="text" name="nr_camere" />
-        <br>
-		Numar de bai <span class="style2">(*)</span> :
-		<input type="text" name="nr_bai" />
-		<br>
-		Confort :
+		</select><br><br>
+		
+		<span class="style2">Pret(*) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="text" name="pret"/> Euro<br><br>
+		
+		<span class="style2">Zona(*) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="text" name="zona"/><br><br>
+		
+		<span class="style2">Numar de incaperi(*) :</span>
+        <input type="text"  size="5px" name="nr_camere" /><br><br>
+		
+		<span class="style2">Numar de bai(*) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+		<input type="text" size="5px" name="nr_bai" /><br><br>
+		
+		<span class="style2">Confort :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 		<select name="confort">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
 		</select> 
-		<br>
-		
-		Suprafata : <input type="text" name="suprafata"/> mp
-		<br>
-		Etaj : <input type="text"  name="etaj" />
-		<br>
-		Poza : <input type="file" name="poza" />
-		<br>		
-		Detalii : <textarea name="detalii"></textarea> 
-		<br>
-		
-		
+		<br><br>
+		<span class="style2">Suprafata :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+		<input type="text"  size="5px" name="suprafata"/> mp
+		<br><br>
+		<span class="style2">Etaj :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+		<input type="text" size="5px"  name="etaj" />
+		<br><br>
+		<span class="style2">Poza :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+		<input type="file" name="poza" />
+		<br><br>	
+		Detalii : <br><textarea name="detalii" style="width:300px"></textarea> 
+		<br><br>
 		<input type="submit" value="adauga"  />
 		<input type="reset">
 	</form>	
-	<label id="valid_message" value="unu"></label>
 	
 	 <?php
  	$actiune = $_GET['actiune'];
@@ -209,9 +205,11 @@ function resize($nume_poza){
 		
 	
 	?>
-	<label> <?=$mess_val?> </label>
-	<?php
-	
+	  <script type="text/javascript">
+    alert("<?php echo $mess_val; ?> ");
+    </script>
+
+	 	<?php
 	}//if  ce verifica daca actiunea e de adaugare
 	
 	?>
