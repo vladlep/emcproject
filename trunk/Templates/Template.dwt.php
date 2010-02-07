@@ -12,14 +12,15 @@
 </head>
 
 <body >
-
-<div id="meniu">
-<div align="center"> 
-<a id="linkuri" href="../home_page.php">Home</a>
-<a id="linkuri" href="../adauga.php">Adauga</a>
-<a id="linkuri" href="../cauta.php">Cauta</a>
-<a id="linkuri" href="../contact.php">Contact</a>
-</div>
+<div id="header" align="center" ><img src="../photo/header.jpg" width="800" height="133" ></div>
+<div id="meniu" align="center">
+<div  id="menu_content" align="center" > 
+  	   <br>
+  	     <a id="linkuri" href="../home_page.php">Home | </a>
+  	     <a id="linkuri" href="../adauga.php">Adauga | </a>
+  	     <a id="linkuri" href="../cauta.php">Cauta | </a>
+  	     <a id="linkuri" href="../contact.php">Contact </a>
+  </div>
 </div>
 
 <div  id="content" >

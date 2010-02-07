@@ -2,7 +2,7 @@
 <html><!-- InstanceBegin template="/Templates/Template.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Contacteaza-ne</title>
 <!-- InstanceEndEditable -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet"  href="css1.css" type="text/css"> 
@@ -12,14 +12,15 @@
 </head>
 
 <body >
-
-<div id="meniu">
-<div align="center"> 
-<a id="linkuri" href="home_page.php">Home</a>
-<a id="linkuri" href="adauga.php">Adauga</a>
-<a id="linkuri" href="cauta.php">Cauta</a>
-<a id="linkuri" href="contact.php">Contact</a>
-</div>
+<div id="header" align="center" ><img src="photo/header.jpg" width="800" height="133" ></div>
+<div id="meniu" align="center">
+<div  id="menu_content" align="center" > 
+  	   <br>
+  	     <a id="linkuri" href="home_page.php">Home | </a>
+  	     <a id="linkuri" href="adauga.php">Adauga | </a>
+  	     <a id="linkuri" href="cauta.php">Cauta | </a>
+  	     <a id="linkuri" href="contact.php">Contact </a>
+  </div>
 </div>
 
 <div  id="content" >
@@ -57,7 +58,7 @@ Bulevardul Sudului, Nr. 12, Timisoara, Judetul Timis<br>
 <table cellspacing="0" cellpadding="0" border="0" align="center" class="contactBancaTable">
 <tbody>
 <tr>
-<td><a><img border="2px" style="color:#F19836" src="photo/case/sediu.jpg" alt="Deveniti client" height="200" width="300"></a><br>
+<td><a><img border="2px" style="color:#F19836" src="photo/case/sediu1.jpg" alt="Deveniti client" height="200" width="300"></a><br>
 <br></td>
 </tr>
 </tbody>

@@ -10,24 +10,44 @@ margin-top: 50px;
 margin-left: auto;
 margin-right: auto;
 width:800px;
-height:800px;
+height:900px;
 background:#FFCC66;
 border:#F19836 5px solid ;
 }
+#menu_content
+{
+vertical-align:middle;
+width:800px;
+height:50px;
+}
+#header
+{
+margin-top:20px;
+margin-bottom:0px;
+margin-left: auto;
+margin-right: auto;
+width:800px;
+}
 #meniu
 {
+vertical-align:middle;
 background:#F19836;
-height:30px;
-margin-right:100px;
-margin-left:100px;
-margin-top: 50px;
+height:50px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 0px;
+width:800px;
 }
 #linkuri
 {
+font-size:18px;
+font-family:"trebuchet ms",helvetica,sans-serif;
 -moz-background-clip:border;
 -moz-background-inline-policy:continuous;
 -moz-background-origin:padding;
-background:#6D1D0E repeat-x scroll center bottom;
-color:#FFFFFF;
+text-align:center;
+background:#A36232 repeat-x scroll center bottom;
+color:#000000;
+text-decoration:none;
 }
 
