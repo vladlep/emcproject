@@ -2,7 +2,7 @@
 <html><!-- InstanceBegin template="/Templates/Template.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Adauga anunt</title>
 <link rel="stylesheet"  href="../css_adauga.css" type="text/css"> 
 <!-- InstanceEndEditable -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -18,14 +18,15 @@
 </head>
 
 <body >
-
-<div id="meniu">
-<div align="center"> 
-<a id="linkuri" href="home_page.php">Home</a>
-<a id="linkuri" href="adauga.php">Adauga</a>
-<a id="linkuri" href="cauta.php">Cauta</a>
-<a id="linkuri" href="contact.php">Contact</a>
-</div>
+<div id="header" align="center" ><img src="photo/header.jpg" width="800" height="133" ></div>
+<div id="meniu" align="center">
+<div  id="menu_content" align="center" > 
+  	   <br>
+  	     <a id="linkuri" href="home_page.php">Home | </a>
+  	     <a id="linkuri" href="adauga.php">Adauga | </a>
+  	     <a id="linkuri" href="cauta.php">Cauta | </a>
+  	     <a id="linkuri" href="contact.php">Contact </a>
+  </div>
 </div>
 
 <div  id="content" >
@@ -136,8 +137,8 @@ function resize($nume_poza){
 		<span class="style2">Poza :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 		<input type="file" name="poza" />
 		<br><br>	
-		Detalii : <br><textarea name="detalii" style="width:300px"></textarea> 
-		<br><br>
+		Detalii : <br><br><textarea name="detalii" style="width:300px"></textarea> 
+		<br><br><br>
 		<input type="submit" value="adauga"  />
 		<input type="reset">
 	</form>	
