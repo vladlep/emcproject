@@ -58,7 +58,7 @@
 </tr>
 </tbody>
 </table>
-<hr  color="#F19836" style="height:5px" >
+<hr  color="#F19836" style="height:5px"  >
 <?php  
 	if(strcmp($_GET["actiune"],"cauta")==0)
 	{
@@ -69,7 +69,8 @@
 		<div >
 		
 		<?php
-	  //slelect din baza de date where parinte=0
+	  //select din baza de date where parinte=0
+		 //fac join la cele 2 tabele din baza de date
 		 $ref1=mysql_query("SELECT * FROM `anunt` JOIN `proprietar` WHERE `tip_oferta`='$tip_oferta' AND `tip_imobil`='$tip_imobil' AND `pret`<='$pret' AND `id_proprietar`=`proprietar`.`id`");
 		//print_r("aa".$ref1);
 		//AND `anunt.id_proprietar`=`proprietar.id`
@@ -82,19 +83,23 @@
                         <?php 
 						$i++;
 						//print_r($item);
+						//on click pe poza aceasta se va afisa la o dimensiune mai mare 
 						if($item['poza'])
                         { ?>
+						&nbsp;&nbsp;&nbsp;
                         <img src='thumbs/<?=$item['poza']?>' onClick="schimba('<?=$item['poza']?>')" />
                         <?php
                         }else
                         {?>
                         <img  src='thumbs/default.jpg' />
-                        <?php } ?>      
-                                <label ><b> Detalii anunt </style></b>:<b>Tip oferta </b>: <?=$item['tip_oferta']."  "?><b>Tip imobil </b>: <?=$item['tip_imobil']." "?><b>pretul </b>: <?=$item['pret']?><b> confort :</b><?=$item['confort']?> <b> zona </b>: <?=$item['zona']?> <b>suprafata </b>:<?=$item['supragata']?> <b>etaj</b>:<?=$item['etaj']?> <b>numar camere : </b> <?=$item['nr_camere']?> <b>numar bai : </b><?=$item['nr_bai']?> <b>Detalii </b>: <?=$item['detalii']?></label>
+                        <?php } 
+						//afisarea detaliilor despre anunt si informatii proprietar
+						?>      
+                                <label ><b> Detalii anunt </style></b>:<b>Tip oferta </b>: <?=$item['tip_oferta']."  "?><b>Tip imobil </b>: <?=$item['tip_imobil']." "?><b>pretul </b>: <?=$item['pret']?><b> confort :</b><?=$item['confort']?> <b> zona </b>: <?=$item['zona']?> <b><br>&nbsp;&nbsp;&nbsp;&nbsp;suprafata </b>:<?=$item['supragata']?> <b>etaj</b>:<?=$item['etaj']?> <b>numar camere : </b> <?=$item['nr_camere']?> <b>numar bai : </b><?=$item['nr_bai']?> <b>Detalii </b>: <?=$item['detalii']?></label>
 								<br>
 								<br>
-							<label> <b>Contact proprietar </b>: tel.<?=$item['telefon']?> <b>email </b>:<?=$item['email']?></label>
-							<br>
+							<label> <b>&nbsp;&nbsp;&nbsp;&nbsp;Contact proprietar </b>: tel.<?=$item['telefon']?> <b>email </b>:<?=$item['email']?></label>
+							<br><br>
                         </div>
                         <?php
 		
