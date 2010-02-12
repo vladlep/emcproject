@@ -27,6 +27,8 @@
 <div  id="content" >
 <!-- InstanceBeginEditable name="region1" -->
 
+<!-- informatii pagina principala-->
+
 <div id="description" > &nbsp;&nbsp; 
   <p><img  src="photo/case/1.jpg" name="poza" width="408" height="263" border="2" align="left" id="poza" style="margin-right:10px;"/>
     Imobiliare Timisoara-vanzari apartamente, case, terenuri, vile, la cele mai mici preturi. FIABILITATE - PRICEPERE - PROFESIONALISM IN SERVICIUL DUMNEAVOASTRA Oferta ACTUAL acopera atat piata imobilelor vechi cat si a constructiilor noi, extinzandu-se pana la terenuri, spatii si constructii comerciale. Agentia noastra deserveste atat cererea interna, cat si investitorii straini. Noi - ca intotdeauna - va vom oferi servicii impecabile, pentru a va satisface cerintele legate de piata imobiliara, si suntem siguri ca veti fi multumit de nivelul serviciilor noastre. Cunoasterea pietei aduce cu sine cresterea nivelului serviciilor oferite. Suntem in permanenta colaborare cu numeroase banci - cunoscand programele de creditare actuale - astfel suntem in masura sa raspundem la intrebarile clientilor nostri legate de posibilitatile de creditare.  </p>
@@ -34,10 +36,11 @@
 <br>
 <br>
 <br>
+
 <div id="news">
-	   <?php
-		require_once ('rss/rss_fetch.inc');
-		
+   	 <?php
+	/*	require_once ('rss/rss_fetch.inc');
+		//conectarea la site pentru rss
 		//$url = 'http://feeds2.feedburner.com/Stirirolro-Auto';
 		$url= 'http://www.vreaucredit.ro/rss-credite-30.xml';
 		$rss = fetch_rss($url);
@@ -52,9 +55,67 @@
 				echo '<a href='.$url.'>'.$title.'</a><br />'.$content.'<hr />';		
 		}
 		
-		?>
+*/		?>
 		<div align="right"><a href="http://www.vreaucredit.ro//" target="_blank"> <strong>Vreau</strong><strong>Credite</strong> - <?=$source?></a></div>
   </div>
+  
+<?php require_once("conection.php"); 	?>
+  <div id="info">
+		
+<?php
+          $order = 'poza';
+		  
+	     //fac join la cele 2 tabele din baza de date
+		 $ref1=mysql_query("SELECT * FROM `anunt` JOIN `proprietar` WHERE `id_proprietar`=`proprietar`.`id` ORDER BY $order DESC");
+		  //print_r("aa".$ref1);
+		
+/* make sure data was retrieved */
+$numrows = mysql_num_rows($ref1);
+//print_r($numrows);
+if ($numrows == 0) {
+    echo "No data to display!";
+    exit;
+}
+   
+		 for( $i=$numrows; $i>$numrows-3; $i--)
+		 { 
+		  
+		   if($item=mysql_fetch_array($ref1))
+                 {
+                    ?>
+                        <div >
+                    <?php 
+						//$i++;
+						//print_r($item);
+						//on click pe poza aceasta se va afisa la o dimensiune mai mare 
+					     if($item['poza']){
+				    ?>
+						&nbsp;&nbsp;&nbsp;
+                        <img src='thumbs/<?=$item['poza']?>' />
+                    <?php
+                        }else{
+				    ?>
+                        <img  src='thumbs/default.jpg' />
+                    <?php } 
+						//afisarea detaliilor despre anunt si informatii proprietar
+						?>      
+                                <label ><b> Detalii anunt </style></b>:<b>Tip oferta </b>: <?=$item['tip_oferta']."  "?><b>Tip imobil </b>: <?=$item['tip_imobil']." "?><b>pretul </b>: <?=$item['pret']?><b> confort :</b><?=$item['confort']?> <b> zona </b>: <?=$item['zona']?> <b><br>&nbsp;&nbsp;&nbsp;&nbsp;suprafata </b>:<?=$item['supragata']?> <b>etaj</b>:<?=$item['etaj']?> <b>numar camere : </b> <?=$item['nr_camere']?> <b>numar bai : </b><?=$item['nr_bai']?> <b>Detalii </b>: <?=$item['detalii']?></label>
+								<br>
+								<br>
+							<label> <b>&nbsp;&nbsp;&nbsp;&nbsp;Contact proprietar </b>: tel.<?=$item['telefon']?> <b>email </b>:<?=$item['email']?></label>
+							<br><br>
+                        </div >
+                        <?php
+		
+			}
+			
+		}
+	
+?>
+
+	</a></div>
+  </div>
+  <!--functia care schimba automat poze -->
   <script>
 function schimba(poza,i)
 {

@@ -56,13 +56,14 @@ function resize($nume_poza){
       imagejpeg($image_resized, $imagine_mica, 100); 
 	  } 
 	
+	//validarea propriettilor introduse in  campurile paginii de adaugare
 	function valid_prop($nume,$telefon,$email)
 	{
-	if(strcmp($nume,"")==0)
+	if(strcmp($nume,"")==0)    //verific numele introdus
 	{
 	return "Nu ati introdus nici un nume";
 	}
-	if(strcmp($telefon,"")==0 && ! preg_match('/^0\d{9}$/', $telefon ))
+	if(strcmp($telefon,"")==0 && ! preg_match('/^0\d{9}$/', $telefon ))    //verific numarul de telefon
 	return "Nu ati introdus nici un numar de telefon";
 	//pt email
 	if( strcmp($email,"")!=0 && eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email)!=1)
@@ -71,6 +72,7 @@ function resize($nume_poza){
 	return "";
 	}	       
 
+    //afisare mesaje in cazul in care campurile obligatorii nu au fost completate
 	function val_anunt($pret,$zona,$nr_camere,$nr_bai)
 	{
 	if(strcmp($pret,"")==0)
@@ -147,7 +149,7 @@ function resize($nume_poza){
  	$actiune = $_GET['actiune'];
 	if(strcmp($actiune,"adauga" )== 0) 
  		{
-		$nume = $_POST["nume"];
+		$nume = $_POST["nume"];         
 		$telefon = $_POST["telefon"];
 		$email = $_POST["email"];
 		// facem ceva validare
@@ -155,7 +157,7 @@ function resize($nume_poza){
 		if ( strcmp($mess_val,"")==0 )
 		{
 		
-		//memoram proprietarul
+		//memoram informatii despre proprietar - id ,nume,telefon, email
 		mysql_query("INSERT INTO  `imobiliare`.`proprietar` (`id` ,`nume` ,`telefon` ,`email`)VALUES (NULL ,  '$nume',  '$telefon',  '$email');");
 		
 		//luam ultimul id de proprietar pt a-l pune in tabela anunt
@@ -173,23 +175,25 @@ function resize($nume_poza){
 		$etaj = $_POST["etaj"];
 		$poza =$_FILES['poza']['name'];
 		$detalii = $_POST['detalii'];
-		/* poza nu se va salva in baza de date , doar numele ei. Pt ca numele sa fie unicat in compunem din data la care a fost adaugata poza 
-		Poza o salvam cu noul nume pe server intr-un folder poze. Creem in plus si un folder thumbs ca incarcarea pozelor sa fie mai rapida.
+		/* poza nu se va salva in baza de date , doar numele ei. 
+		//Pt ca numele sa fie unicat in compunem din data la care a fost adaugata poza 
+		Poza o salvam cu noul nume pe server intr-un folder poze. 
+		Creem in plus si un folder thumbs ca incarcarea pozelor sa fie mai rapida.
 		*/
 		//print_r($poza." are numele ala");  daca decomentezi va afisa un mesaj cu numele pozei
 
 		if($poza!='')
 		{
 			$nr=strtotime(date('y-m-d h:i:s'));
-			$fis=explode('.',$poza); // imparte in 2 array : 1. pana la punct , 2.dupa punct
-			$ext=$fis[1];  //luam extensia pozei din al 2-lea array
+			$fis=explode('.',$poza);   // imparte in 2 array : 1. pana la punct , 2.dupa punct
+			$ext=$fis[1];              //luam extensia pozei din al 2-lea array
 			$nume_fisier='pic'.$nr.'.'.$ext; 
-			$dir='photo/'.$nume_fisier;
+			$dir='photo/'.$nume_fisier; 
 			
 			$temp=$_FILES['poza']['tmp_name'];
-			copy($temp,$dir);
+			copy($temp,$dir);    
 			$dir2='thumbs/'.$nume_fisier;
-			copy($temp,$dir2);
+			copy($temp,$dir2);          //save in thumbs        
 			resize($nume_fisier);		
 		}
 		$nr_camere = $_POST['nr_camere'];
@@ -198,6 +202,7 @@ function resize($nume_poza){
 		$mess_val = val_anunt($pret,$zona,$nr_camere,$nr_bai);
 		if( strcmp($mess_val,"")==0)
 		{
+		//inserez in baza de date
 		mysql_query("INSERT INTO `imobiliare`.`anunt` (`id`, `id_proprietar`, `tip_oferta`, `tip_imobil`, `pret`, `confort`, `zona`, `suprafata`, `etaj`, `poza`, `nr_camere`, `nr_bai`, `data_anunt`, `Detalii`)
 		 VALUES (NULL, '$id_p', '$tip_oferta', '$tip_imobil', '$pret', '$confort', '$zona', '$suprafata', '$etaj', '$nume_fisier', '$nr_camere', '$nr_bai', '$data', '$detalii');");
 		$mess_val= "Anuntul a fost adaugat cu succes";
