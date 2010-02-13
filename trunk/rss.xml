@@ -1,0 +1,28 @@
+<?xml version='1.0'?><rss version='2.0'><channel>
+<title>Imobiliare</title>
+<link>http://www.google.com/</link>
+<description>Apartamente si case de vanzare - ia de aici </description>
+<language>en-us</language>
+<docs>http://www.google.com/rss.xml</docs>
+<item><tip_imobil>Casa</tip_imobil>
+<pret>123450</pret>
+<link>http://www.google.com/index.php?d=Casa</link></item>
+<item><tip_imobil>Apartament</tip_imobil>
+<pret>324455</pret>
+<link>http://www.google.com/index.php?d=Apartament</link></item>
+<item><tip_imobil>Apartament</tip_imobil>
+<pret>1222333</pret>
+<link>http://www.google.com/index.php?d=Apartament</link></item>
+<item><tip_imobil>Casa</tip_imobil>
+<pret>322000</pret>
+<link>http://www.google.com/index.php?d=Casa</link></item>
+<item><tip_imobil>Casa</tip_imobil>
+<pret>233</pret>
+<link>http://www.google.com/index.php?d=Casa</link></item>
+<item><tip_imobil>Casa</tip_imobil>
+<pret>233</pret>
+<link>http://www.google.com/index.php?d=Casa</link></item>
+<item><tip_imobil>Casa</tip_imobil>
+<pret>120000</pret>
+<link>http://www.google.com/index.php?d=Casa</link></item>
+</channel></rss>

@@ -75,7 +75,7 @@
 		//print_r("aa".$ref1);
 		//AND `anunt.id_proprietar`=`proprietar.id`
 	 $i=1;
-	 	    while(($item=mysql_fetch_array($ref1)) && ($i <= 5) )
+	 	    while(($item=mysql_fetch_array($ref1)) && ($i <= 4) )
                         {
                         //print_r($item);
                         ?>
