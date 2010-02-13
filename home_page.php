@@ -55,7 +55,7 @@
 				echo '<a href='.$url.'>'.$title.'</a><br />'.$content.'<hr />';		
 		}
 		
-*/		?>
+		?>
 		<div align="right"><a href="http://www.vreaucredit.ro//" target="_blank"> <strong>Vreau</strong><strong>Credite</strong> - <?=$source?></a></div>
   </div>
   
@@ -69,7 +69,7 @@
 		 $ref1=mysql_query("SELECT * FROM `anunt` JOIN `proprietar` WHERE `id_proprietar`=`proprietar`.`id` ORDER BY $order DESC");
 		  //print_r("aa".$ref1);
 		
-/* make sure data was retrieved */
+
 $numrows = mysql_num_rows($ref1);
 //print_r($numrows);
 if ($numrows == 0) {
@@ -111,10 +111,76 @@ if ($numrows == 0) {
 			
 		}
 	
-?>
+*/?>
+<?php require_once("conection.php"); 
+ $order = 'poza';
+ 
+ $ref1=mysql_query("SELECT * FROM `anunt` JOIN `proprietar` WHERE `id_proprietar`=`proprietar`.`id` ORDER BY $order DESC");
+ //print_r("aa".$ref1);
+ $numrows = mysql_num_rows($ref1);
+ // print_r($numrows);
+  if ($numrows == 0) {
+    echo "No data to display!";
+    exit;
+ }	?>
 
-	</a></div>
-  </div>
+ <?php
+    // open a file pointer to an RSS file
+    $fp = fopen ("rss.xml", "w");
+
+    // Now write the header information
+    fwrite ($fp, "<?xml version='1.0'?><rss version='2.0'><channel>\n");
+
+    fwrite ($fp, "<title>Imobiliare</title>\n");
+
+    fwrite ($fp, "<link>http://www.google.com/</link>\n");
+
+    fwrite ($fp, "<description>Apartamente si case de vanzare - ia de aici </description>\n");
+
+    fwrite ($fp, "<language>en-us</language>\n");
+
+    fwrite ($fp, "<docs>http://www.google.com/rss.xml</docs>\n");
+
+        while ($content_rec = mysql_fetch_row($ref1)) {
+        fwrite ($fp, "<item>");
+
+        $headline = $content_rec[3];
+        $content_1 = substr($content_rec[4], 0, 250);
+        $content = strip_tags($content_1);
+        if (strlen($content_rec[4]) > 250) {
+            $content = $content . "....";
+           }
+        fwrite ($fp, "<tip_imobil>$headline</tip_imobil>\n");
+        fwrite ($fp, "<pret>$content</pret>\n");
+        $item_link = "http://www.google.com/index.php?d=$content_rec[3]";
+        fwrite ($fp, "<link>$item_link</link>");
+
+        fwrite ($fp, "</item>\n");
+    }
+    fwrite ($fp, "</channel></rss>\n");
+    fclose ($fp);
+
+    ?>
+	 <?php
+	
+     $xml = new DomDocument('1.0');
+    $xml->load('rss.xml');
+   $i=0;
+   foreach($xml->getElementsBytagName('item') as $item){
+            /* find the title */
+            $imobil = $item->getElementsByTagName('tip_imobil')->item(0)->firstChild->nodeValue;
+
+            /* find the author - for simplicity we assume there is only one */
+            $pret = $item->getElementsByTagName('pret')->item(0)->firstChild->nodeValue;
+    if($i<3){
+          ?>  
+            
+        <div>
+            <h2><?php echo($imobil); ?></h2>
+            <p><b>imobil:</b>: <?php echo($pret);}
+			 $i++;}?></p>
+        </div>    
+         
   <!--functia care schimba automat poze -->
   <script>
 function schimba(poza,i)
